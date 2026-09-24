@@ -41,4 +41,4 @@ If none of that helps, please file an issue on [the workflow's issue tracker][is
 
 [^ Documentation index](index.md)
 
-[issues]: https://github.com/deanishe/alfred-firefox/issues
+[issues]: https://github.com/globau/alfred-firefox/issues

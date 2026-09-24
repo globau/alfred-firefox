@@ -99,5 +99,5 @@ See [the demo workflow][demo] for an example implementation.
 [^ Documentation index](index.md)
 
 
-[demo]: https://github.com/deanishe/alfred-firefox/raw/master/doc/Firefox%20Trigger%20Demo.alfredworkflow
+[demo]: https://github.com/globau/alfred-firefox/raw/master/doc/Firefox%20Trigger%20Demo.alfredworkflow
 

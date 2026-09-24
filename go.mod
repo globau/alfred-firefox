@@ -1,4 +1,4 @@
-module go.deanishe.net/alfred-firefox-assistant
+module github.com/globau/alfred-firefox
 
 go 1.13
 

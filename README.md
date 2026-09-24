@@ -1,11 +1,13 @@
 <div align="center">
-  <img src="https://github.com/deanishe/alfred-firefox/blob/master/icon.png" alt="Alfred-Firefox icon" title="Alfred-Firefox icon"/>
+  <img src="https://github.com/globau/alfred-firefox/blob/master/icon.png" alt="Alfred-Firefox icon" title="Alfred-Firefox icon"/>
 </div>
 
 Firefox Assistant for Alfred
 ============================
 
 Search and manipulate Firefox's bookmarks, history and tabs from Alfred.
+
+This is a fork of [Dean Jackson's original workflow][upstream], which is no longer maintained. It is maintained by [Glob][maintainer] and releases are built for Apple silicon (arm64).
 
 ![Animated demo of workflow in use][demo]
 
@@ -57,15 +59,17 @@ This workflow and extension are released under the [MIT licence][licence].
 It is written in [Go][go] and heavily based on the [AwGo library][awgo]. The icons are based on [Font Awesome][fontawesome].
 
 
+[upstream]: https://github.com/deanishe/alfred-firefox
+[maintainer]: https://github.com/globau
 [addon]: https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/
-[licence]: https://github.com/deanishe/alfred-firefox/blob/master/LICENCE.txt
-[workflow]: https://github.com/deanishe/alfred-firefox/releases/latest
-[demo]: https://github.com/deanishe/alfred-firefox/blob/master/demo.gif
-[docs]: https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md
-[scripts]: https://github.com/deanishe/alfred-firefox/blob/master/doc/scripts.md
-[integration]: https://github.com/deanishe/alfred-firefox/blob/master/doc/integration.md
-[usage]: https://github.com/deanishe/alfred-firefox/blob/master/doc/usage.md
-[setup]: https://github.com/deanishe/alfred-firefox/blob/master/doc/setup.md
+[licence]: https://github.com/globau/alfred-firefox/blob/master/LICENCE.txt
+[workflow]: https://github.com/globau/alfred-firefox/releases/latest
+[demo]: https://github.com/globau/alfred-firefox/blob/master/demo.gif
+[docs]: https://github.com/globau/alfred-firefox/blob/master/doc/index.md
+[scripts]: https://github.com/globau/alfred-firefox/blob/master/doc/scripts.md
+[integration]: https://github.com/globau/alfred-firefox/blob/master/doc/integration.md
+[usage]: https://github.com/globau/alfred-firefox/blob/master/doc/usage.md
+[setup]: https://github.com/globau/alfred-firefox/blob/master/doc/setup.md
 [go]: https://golang.org
 [awgo]: https://github.com/deanishe/awgo
 [fontawesome]: https://fontawesome.com/
