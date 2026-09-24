@@ -24,6 +24,18 @@ The workflow supports Alfred 4+ and the extension works with (at least) Firefox,
 See [the setup documentation][setup] for more details.
 
 
+Migrating from the original workflow
+------------------------------------
+
+This fork uses the same bundle ID and Firefox extension as Dean Jackson's original, so it installs as an update rather than alongside it.
+
+1. Download and open the [latest version of the workflow][workflow]. Alfred will recognise it as an update to your existing Firefox Assistant; accept the update. Your settings and custom scripts are kept.
+2. Keep the Firefox extension you already have installed; there is no new extension to install.
+3. Run `ffass workflow:register` in Alfred (or run `ffass` and choose `Register Workflow with Browser`) and action the result, then restart Firefox (or click the extension's icon) so it reconnects to the updated workflow.
+
+Future updates are checked against this repository, so this migration only has to be done once.
+
+
 Usage
 -----
 
