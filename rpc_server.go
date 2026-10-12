@@ -48,9 +48,9 @@ func newRPCService(addr string, client *firefox) (*rpcServer, error) {
 	return s, nil
 }
 
-// AppName returns name of browser running the server.
-func (s *rpcServer) AppName(_ string, name *string) error {
-	*name = browserName
+// apppath returns the path of the browser running the server.
+func (s *rpcServer) AppPath(_ string, path *string) error {
+	*path = browserPath
 	return nil
 }
 

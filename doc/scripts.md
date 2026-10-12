@@ -39,7 +39,7 @@ You can quickly grab the name of a script by using `CMD+C` (copy) on an action i
 
 ### Current browser ###
 
-As the workflow supports different versions of Firefox (Firefox, Firefox Nightly, Firefox Developer Edition), the name of the application it's currently connected to will be specifed in the `BROWSER` environment variable. The default `Open in Firefox.sh` script, for example, uses the command
+As the workflow supports different versions of Firefox (Firefox, Firefox Nightly, Firefox Developer Edition), the absolute application bundle path of the connected browser is specified in the `BROWSER` environment variable. The default `Open in Firefox.sh` script, for example, uses the command
 
 ```bash
 /usr/bin/open -a "$BROWSER" "$1"

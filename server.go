@@ -9,15 +9,12 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"os/exec"
 	"os/signal"
-	"regexp"
 	"strconv"
 	"syscall"
 	"time"
 
 	aw "github.com/deanishe/awgo"
-	"github.com/deanishe/awgo/util"
 	"github.com/peterbourgon/ff/ffcli"
 )
 
@@ -34,7 +31,7 @@ var (
 		`),
 		Exec: runServer,
 	}
-	browserName string
+	browserPath string
 )
 
 // set up logging for the server.
@@ -95,27 +92,6 @@ func writePID() error {
 	return ioutil.WriteFile(pidFile, []byte(strconv.FormatInt(int64(os.Getpid()), 10)), 0600)
 }
 
-func getBrowserName() (name string) {
-	name = "Firefox"
-	var (
-		data []byte
-		err  error
-	)
-	ppid := os.Getppid()
-	cmd := exec.Command("lsappinfo", "info", "-only", "name", fmt.Sprintf("#%d", ppid))
-	if data, err = util.RunCmd(cmd); err != nil {
-		log.Printf("[ERROR] couldn't get app info for pid %d: %s", ppid, err)
-		return
-	}
-	m := regexp.MustCompile(`"LSDisplayName"="(.+)"`).FindSubmatch(data)
-	if m == nil {
-		log.Printf("couldn't parse app name from %q", data)
-		return
-	}
-	name = string(m[1])
-	return
-}
-
 // start extension client and RPC server
 func runServer(_ []string) error {
 	wf.Configure(aw.TextErrors(true))
@@ -125,12 +101,16 @@ func runServer(_ []string) error {
 	if err := initLogging(); err != nil {
 		return err
 	}
-	browserName = getBrowserName()
-	log.Printf("browser=%q", browserName)
 	defer func() {
 		_ = os.Remove(socketPath)
 		_ = os.Remove(pidFile)
 	}()
+	var err error
+	browserPath, err = getBrowserPath(os.Getppid())
+	if err != nil {
+		return err
+	}
+	log.Printf("browser=%q", browserPath)
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)

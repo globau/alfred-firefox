@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -104,7 +105,7 @@ func (a tAction) Run(tabID int) error {
 	c := mustClient()
 	switch a.action {
 	case "activate":
-		_, err := util.RunAS(fmt.Sprintf(`tell application "%s" to activate`, c.appName))
+		_, err := util.RunCmd(exec.Command("/usr/bin/open", "-a", c.appPath))
 		if err != nil {
 			return err
 		}
@@ -131,7 +132,7 @@ func (a uAction) Icon() *aw.Icon { return a.icon }
 func (a uAction) Run(URL string) error {
 	c, err := newClient()
 	if err == nil {
-		os.Setenv("BROWSER", c.appName)
+		os.Setenv("BROWSER", c.appPath)
 	}
 	data, err := util.Run(a.script, URL)
 	if err != nil {

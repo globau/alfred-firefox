@@ -11,7 +11,7 @@ import (
 // RPC client used by workflow to execute extension actions.
 type rpcClient struct {
 	client  *rpc.Client
-	appName string
+	appPath string
 }
 
 // Create new RPC client. Returns an error if connection to server fails.
@@ -21,11 +21,11 @@ func newClient() (*rpcClient, error) {
 		return nil, err
 	}
 	client := &rpcClient{client: c}
-	client.appName, err = client.AppName()
+	client.appPath, err = client.AppPath()
 	if err != nil {
 		return nil, err
 	}
-	log.Printf("RPC client connected to %q", client.appName)
+	log.Printf("RPC client connected to %q", client.appPath)
 	return client, nil
 }
 
@@ -39,10 +39,10 @@ func mustClient() *rpcClient {
 	return c
 }
 
-// AppName returns the name of the application running the server.
-func (c *rpcClient) AppName() (string, error) {
+// apppath returns the path of the application running the server.
+func (c *rpcClient) AppPath() (string, error) {
 	var s string
-	err := c.client.Call("Firefox.AppName", "", &s)
+	err := c.client.Call("Firefox.AppPath", "", &s)
 	return s, err
 }
 
