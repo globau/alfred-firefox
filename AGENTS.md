@@ -7,3 +7,5 @@ Use the connected browser's absolute application bundle path for activation. Do 
 Build with `CGO_ENABLED=0 go build .`. For `go test ./...`, set `alfred_workflow_version=0.0.0`, `alfred_workflow_bundleid`, `alfred_workflow_cache` and `alfred_workflow_data` to test values and temporary directories: awgo validates these during package initialisation. The release script also signs, notarises and optionally publishes; do not use it for a local test build.
 
 After replacing the installed executable, restart the browser or reconnect the extension so the native messaging server uses the new build and RPC interface.
+
+Release preflight runs the Go tests before checking repository state, with temporary Alfred cache and data directories. Test failures stop the release even with `--force`.

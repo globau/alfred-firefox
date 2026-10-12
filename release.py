@@ -50,6 +50,17 @@ def output(args: list[str]):
 
 
 def preflight(tag, force):
+    print("running tests ...", flush=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        env = {
+            **os.environ,
+            "alfred_workflow_version": tag.removeprefix("v"),
+            "alfred_workflow_bundleid": read_plist(ROOT / "info.plist")["bundleid"],
+            "alfred_workflow_cache": str(Path(tmp) / "cache"),
+            "alfred_workflow_data": str(Path(tmp) / "data"),
+        }
+        run(["go", "test", "./..."], env=env)
+
     print("checking repository state ...")
     if not force and output(["git", "status", "--porcelain"]):
         raise ReleaseError("working tree has uncommitted changes")
